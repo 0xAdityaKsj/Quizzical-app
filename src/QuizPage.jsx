@@ -41,6 +41,7 @@ export default function QuizPage() {
                     {quizData.results.map((question, index) => (
                         <Question
                             key={index}
+                            index={index}
                             question={decodeHTML(question.question)}
                             correctAnswer={decodeHTML(question.correct_answer)}
                             incorrectAnswers={question.incorrect_answers.map(answer => decodeHTML(answer))}

@@ -2,6 +2,11 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: rgb(30, 25, 25);
+}
+
+
 .start-quiz-page {
   display: flex;
   flex-direction: column;
@@ -11,7 +16,7 @@
 }
 
 .start-quiz-page p {
-  color: #293264;
+  color: whitesmoke;
   text-align: center;
   font-family: Karla;
   font-size: 8em;
@@ -24,7 +29,7 @@
 }
 
 .start-quiz-page h3 {
-  color: #293264;
+  color: #FFFFE0;
   font-family: Inter;
   font-size: 1.75em;
   font-weight: 400;
@@ -33,9 +38,9 @@
 .start-quiz-page button {
   border-radius: 15px;
   border: none;
-  background: #4D5B9E;
+  background: #FFFFE0;
   font-family: Inter;
-  color: #F5F7FB;
+  color: black;
   text-align: center;
   font-family: Inter;
   font-size: 1.7em;
