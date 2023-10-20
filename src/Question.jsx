@@ -12,7 +12,7 @@ export default function Question(props) {
         <form>
           {options.map((option, index) => (
             <div className="radio-toolbar" key={index}>
-              <input type="radio" id={`option-${index}-${props.index}`} name={`answer-${index}-${props.index}`} value={option} />
+              <input type="radio" id={`option-${index}-${props.index}`} name={`answer-${props.index}`} value={option} />
               <label htmlFor={`option-${index}-${props.index}`}>{option}</label>
             </div>
           ))}
