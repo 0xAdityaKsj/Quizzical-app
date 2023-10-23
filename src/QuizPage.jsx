@@ -9,7 +9,9 @@ const decodeHTML = (html) => {
 
 export default function QuizPage() {
     const [quizData, setQuizData] = React.useState(null);
-    const [userAnswers, setUserAnswers] = React.useState([])
+    const [userAnswers, setUserAnswers] = React.useState({})
+    const [score, setScore] = React.useState(0)
+    const [endQuiz, setEndQuiz] = React.useState(false)
 
     useEffect(() => {
         const getQuiz = async () => {
@@ -26,13 +28,23 @@ export default function QuizPage() {
     }, []);
 
     function handleAnswers() {
-        const checkedRadioButtons = document.querySelectorAll('input[name="answer"]:checked');
-        const answers = Array.from(checkedRadioButtons).map((element) => element.value);
-
-        setUserAnswers(answers);
-        console.log(answers);
+        setEndQuiz(prevEndQuiz => !prevEndQuiz);
+        Object.keys(userAnswers).forEach((questionIndex) => {
+            if (userAnswers[questionIndex] === quizData.results[questionIndex].correct_answer) {
+                console.log(`Question ${questionIndex} is correct`);
+                setScore(prevScore => prevScore + 1)
+            } else {
+                console.log(`Question ${questionIndex} is incorrect`);
+            }
+        });
     }
 
+
+    const updateUserAnswer = (questionIndex, selectedOption) => {
+        setUserAnswers({ ...userAnswers, [questionIndex]: selectedOption })
+    }
+
+    console.log(userAnswers)
 
     return (
         <div className="quiz-page">
@@ -45,10 +57,11 @@ export default function QuizPage() {
                             question={decodeHTML(question.question)}
                             correctAnswer={decodeHTML(question.correct_answer)}
                             incorrectAnswers={question.incorrect_answers.map(answer => decodeHTML(answer))}
-
+                            updateUserAnswer={updateUserAnswer}
                         />
                     ))}
                     <button onClick={handleAnswers}>Find answers</button>
+                    {endQuiz && score}
                 </>
             ) : (
                 <p>Loading quiz data...</p>
