@@ -15,7 +15,7 @@ export default function Question(props) {
         <form>
           {randomizedOptions.map((option, index) => (
             <div className="radio-toolbar" key={index}>
-              <input type="radio" onChange={() => props.updateUserAnswer(props.index, option)} id={`option-${index}-${props.index}`} name={`answer-${props.index}`} value={option} />
+              <input type="radio" disabled={props.endQuiz} onChange={() => props.updateUserAnswer(props.index, option)} id={`option-${index}-${props.index}`} name={`answer-${props.index}`} value={option} />
               <label htmlFor={`option-${index}-${props.index}`}>{option}</label>
             </div>
           ))}

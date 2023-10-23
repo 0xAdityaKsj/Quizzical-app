@@ -58,6 +58,7 @@ export default function QuizPage() {
                             correctAnswer={decodeHTML(question.correct_answer)}
                             incorrectAnswers={question.incorrect_answers.map(answer => decodeHTML(answer))}
                             updateUserAnswer={updateUserAnswer}
+                            endQuiz={endQuiz}
                         />
                     ))}
                     <button onClick={handleAnswers}>Find answers</button>
