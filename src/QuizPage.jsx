@@ -12,6 +12,7 @@ export default function QuizPage() {
     const [userAnswers, setUserAnswers] = React.useState({})
     const [score, setScore] = React.useState(0)
     const [endQuiz, setEndQuiz] = React.useState(false)
+    const [correctness, setCorrectness] = React.useState({})
 
     useEffect(() => {
         const getQuiz = async () => {
@@ -29,13 +30,18 @@ export default function QuizPage() {
 
     function handleAnswers() {
         setEndQuiz(prevEndQuiz => !prevEndQuiz);
+        let newCorrectness = {}
         Object.keys(userAnswers).forEach((questionIndex) => {
             if (userAnswers[questionIndex] === quizData.results[questionIndex].correct_answer) {
                 console.log(`Question ${questionIndex} is correct`);
                 setScore(prevScore => prevScore + 1)
+                newCorrectness[questionIndex] = true
             } else {
                 console.log(`Question ${questionIndex} is incorrect`);
+                newCorrectness[questionIndex] = false
             }
+            console.log(JSON.stringify(newCorrectness, null, 2))
+            setCorrectness(newCorrectness)
         });
     }
 
@@ -59,10 +65,15 @@ export default function QuizPage() {
                             incorrectAnswers={question.incorrect_answers.map(answer => decodeHTML(answer))}
                             updateUserAnswer={updateUserAnswer}
                             endQuiz={endQuiz}
+                            correctness={correctness}
+                            selectedOption={userAnswers[index]}
                         />
                     ))}
-                    <button onClick={handleAnswers}>Find answers</button>
-                    {endQuiz && score}
+                    {!endQuiz && <button onClick={handleAnswers}>Find answers</button>}
+
+                    {endQuiz && `Your Score : ${score}/10`}
+                    {endQuiz && <button>New Quiz</button>}
+
                 </>
             ) : (
                 <p>Loading quiz data...</p>
