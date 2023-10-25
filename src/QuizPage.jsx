@@ -60,7 +60,6 @@ export default function QuizPage() {
                             incorrectAnswers={question.incorrect_answers.map(answer => decodeHTML(answer))}
                             updateUserAnswer={updateUserAnswer}
                             endQuiz={endQuiz}
-                            correctness={correctness}
                             selectedOption={userAnswers[index]}
                         />
                     ))}

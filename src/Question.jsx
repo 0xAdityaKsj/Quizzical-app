@@ -4,7 +4,6 @@ export default function Question(props) {
 
   const [randomizedOptions, setRandomizedOptions] = React.useState([]);
 
-  console.log("correctness:", props.correctness, "endQuiz:", props.endQuiz);
 
 
   React.useEffect(() => {
