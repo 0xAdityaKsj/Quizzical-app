@@ -13,19 +13,20 @@ export default function QuizPage() {
     const [score, setScore] = React.useState(0)
     const [endQuiz, setEndQuiz] = React.useState(false)
 
-    useEffect(() => {
-        const getQuiz = async () => {
-            try {
-                const response = await fetch("https://opentdb.com/api.php?amount=10");
-                const data = await response.json();
-                setQuizData(data);  // Update the state with the quiz data
-            } catch (error) {
-                console.error("Error fetching quiz data:", error);
-            }
-        };
+    const fetchQuizData = async () => {
+        try {
+            const response = await fetch("https://opentdb.com/api.php?amount=10");
+            const data = await response.json();
+            setQuizData(data);  // Update the state with the quiz data
+        } catch (error) {
+            console.error("Error fetching quiz data:", error);
+        }
+    };
 
-        getQuiz();
+    useEffect(() => {
+        fetchQuizData();
     }, []);
+
 
     function handleAnswers() {
         setEndQuiz(prevEndQuiz => !prevEndQuiz);
@@ -38,6 +39,17 @@ export default function QuizPage() {
                 console.log(`Question ${questionIndex} is incorrect`);
             }
         });
+    }
+
+    function newQuiz() {
+        // Reset the states
+        setQuizData(null);
+        setUserAnswers({});
+        setScore(0);
+        setEndQuiz(false);
+
+        // Fetch new quiz data
+        fetchQuizData();
     }
 
 
@@ -66,7 +78,7 @@ export default function QuizPage() {
                     {!endQuiz && <button onClick={handleAnswers}>Find answers</button>}
 
                     {endQuiz && `Your Score : ${score}/10`}
-                    {endQuiz && <button>New Quiz</button>}
+                    {endQuiz && <button onClick={newQuiz}>New Quiz</button>}
 
                 </>
             ) : (
