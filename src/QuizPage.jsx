@@ -12,7 +12,6 @@ export default function QuizPage() {
     const [userAnswers, setUserAnswers] = React.useState({})
     const [score, setScore] = React.useState(0)
     const [endQuiz, setEndQuiz] = React.useState(false)
-    const [correctness, setCorrectness] = React.useState({})
 
     useEffect(() => {
         const getQuiz = async () => {
@@ -35,13 +34,9 @@ export default function QuizPage() {
             if (userAnswers[questionIndex] === quizData.results[questionIndex].correct_answer) {
                 console.log(`Question ${questionIndex} is correct`);
                 setScore(prevScore => prevScore + 1)
-                newCorrectness[questionIndex] = true
             } else {
                 console.log(`Question ${questionIndex} is incorrect`);
-                newCorrectness[questionIndex] = false
             }
-            console.log(JSON.stringify(newCorrectness, null, 2))
-            setCorrectness(newCorrectness)
         });
     }
 
