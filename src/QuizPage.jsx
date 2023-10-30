@@ -5,7 +5,7 @@ import Question from "./Question";
 import useWindowSize from 'react-use/lib/useWindowSize'
 import Confetti from 'react-confetti'
 
-import { Audio, Dna, RevolvingDot, Grid } from 'react-loader-spinner'
+import { Grid } from 'react-loader-spinner'
 
 // Utility function to decode HTML entities
 const decodeHTML = (html) => {
