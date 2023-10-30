@@ -14,7 +14,7 @@ export default function Question(props) {
   return (
     <>
       <div className='quiz-template'>
-        <h1>{props.question}</h1>
+        <div className='quiz-question'>{props.question}</div>
         <form>
           {randomizedOptions.map((option, index) => (
             <div className="radio-toolbar" key={index}>
@@ -46,6 +46,7 @@ export default function Question(props) {
             </div>
           ))}
         </form>
+        <div className="line"></div>
       </div>
 
     </>

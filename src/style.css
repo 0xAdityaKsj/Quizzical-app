@@ -3,9 +3,14 @@
 }
 
 body {
-  background-color: rgb(114, 91, 91);
+  background: #F5F7FB;
 }
 
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .start-quiz-page {
   display: flex;
@@ -16,7 +21,7 @@ body {
 }
 
 .start-quiz-page p {
-  color: whitesmoke;
+  color: #293264;
   text-align: center;
   font-family: Karla;
   font-size: 8em;
@@ -25,29 +30,51 @@ body {
   line-height: normal;
   padding: 0;
   margin: 0;
-  margin-top: 1.7em;
+  margin-top: 1.4em;
 }
 
 .start-quiz-page h3 {
-  color: #FFFFE0;
+  color: #293264;
   font-family: Inter;
   font-size: 1.75em;
   font-weight: 400;
 }
 
-.start-quiz-page button {
-  border-radius: 15px;
+.start-quiz-page button,
+.quiz-page button {
   border: none;
-  background: #FFFFE0;
-  font-family: Inter;
-  color: black;
+  border-radius: 15px;
+  background: #4D5B9E;
+  padding: 0.5em 2em 0.5em 2em;
+  color: #F5F7FB;
   text-align: center;
   font-family: Inter;
-  font-size: 1.7em;
+  font-size: 10.24px;
   font-style: normal;
-  font-weight: 500;
-  padding: 0.5em 2em 0.5em 2em;
+  line-height: normal;
+  transition: all 0.3s ease;
 }
+
+.quiz-page button:hover,
+.start-quiz-page button:hover {
+  transform: scale(1.1);
+  /* Enlarges the button to 110% of its original size */
+}
+
+.quiz-question {
+  margin-bottom: 16px
+}
+
+.start-quiz-page button {
+  font-size: 1.7em;
+  font-weight: 600;
+}
+
+.quiz-page button {
+  padding: 11px 22px;
+  font-weight: 500;
+}
+
 
 .svg1 {
   position: absolute;
@@ -70,12 +97,21 @@ body {
   gap: 1em
 }
 
+.quiz-question {
+  color: #293264;
+  font-family: Karla;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
 .correct {
-  background-color: green !important;
+  background: #94D7A2 !important;
 }
 
 .incorrect {
-  background-color: red !important;
+  background: #F8BCBC !important;
 }
 
 .radio-toolbar input[type="radio"] {
@@ -86,24 +122,54 @@ body {
 
 .radio-toolbar label {
   display: inline-block;
-  background-color: #ddd;
-  padding: 10px 20px;
-  font-size: 16px;
-  border: 2px solid #444;
-  border-radius: 4px;
+  padding: 5px 10px;
+  border-radius: 7.942px;
+  border: 0.794px solid #4D5B9E;
+  color: #293264;
+  text-align: center;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
 }
 
 
-
 input[type="radio"]:checked+label {
-  background-color: rgb(255, 254, 187);
-  border-color: rgb(204, 204, 68);
+  background: #D6DBF5;
 }
 
 input[name="answer"]:focus+label {
   border: 2px dashed #444;
 }
 
+.radio-toolbar label {
+  transition: all 0.3s ease;
+}
+
 .radio-toolbar label:hover {
   background-color: rgb(253, 255, 221);
+  transform: scale(1.1);
+}
+
+.line {
+  border-top: 0.794px solid #DBDEF0;
+  ;
+  margin-bottom: 16px;
+}
+
+.buttons-score {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 11em;
+  font-family: Karla;
+  gap: 1em;
 }
