@@ -163,6 +163,7 @@ input[name="answer"]:focus+label {
   justify-content: center;
   align-items: center;
   gap: 20px;
+  font-family: Karla;
 }
 
 .loading {

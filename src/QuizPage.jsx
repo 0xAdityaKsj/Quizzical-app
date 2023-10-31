@@ -22,7 +22,7 @@ export default function QuizPage() {
 
     const fetchQuizData = async () => {
         try {
-            const response = await fetch("https://opentdb.com/api.php?amount=7");
+            const response = await fetch(`https://opentdb.com/api.php?amount=7`);
             const data = await response.json();
             setQuizData(data);  // Update the state with the quiz data
         } catch (error) {
@@ -37,7 +37,6 @@ export default function QuizPage() {
 
     function handleAnswers() {
         setEndQuiz(prevEndQuiz => !prevEndQuiz);
-        let newCorrectness = {}
         Object.keys(userAnswers).forEach((questionIndex) => {
             if (userAnswers[questionIndex] === quizData.results[questionIndex].correct_answer) {
                 console.log(`Question ${questionIndex} is correct`);
