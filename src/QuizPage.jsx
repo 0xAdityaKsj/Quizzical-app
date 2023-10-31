@@ -89,7 +89,7 @@ export default function QuizPage() {
 
                     </div>
 
-                    {(endQuiz && score > 4) && <Confetti
+                    {(endQuiz && score > 3) && <Confetti
                         width={width}
                         height={height}
                     />}
