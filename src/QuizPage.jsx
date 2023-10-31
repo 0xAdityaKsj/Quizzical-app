@@ -85,7 +85,7 @@ export default function QuizPage() {
                     <div className="buttons-score">
                         {!endQuiz && <button onClick={handleAnswers} className="find-ans-btn">Find answers</button>}
                         {endQuiz && <button onClick={newQuiz}>New Quiz</button>}
-                        {endQuiz && `Your Score : ${score}/10`}
+                        {endQuiz && `Your Score : ${score}/7`}
 
                     </div>
 
