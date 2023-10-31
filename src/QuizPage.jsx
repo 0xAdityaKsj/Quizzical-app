@@ -22,7 +22,7 @@ export default function QuizPage() {
 
     const fetchQuizData = async () => {
         try {
-            const response = await fetch("https://opentdb.com/api.php?amount=10");
+            const response = await fetch("https://opentdb.com/api.php?amount=7");
             const data = await response.json();
             setQuizData(data);  // Update the state with the quiz data
         } catch (error) {
@@ -89,7 +89,7 @@ export default function QuizPage() {
 
                     </div>
 
-                    {(endQuiz && score > 5) && <Confetti
+                    {(endQuiz && score > 4) && <Confetti
                         width={width}
                         height={height}
                     />}
